@@ -1,0 +1,58 @@
+<p-table [value]="resinfo"
+  [globalFilterFields]="['nome', 'nome_restaurante', 'data', 'horas','nPessoas','situacao','observacoes']"
+  selectionMode="single"
+  [(selection)]="selectedRes"
+  [tableStyle]="{ 'min-width': '50rem' }"
+  (onRowSelect)="mudarEstado()">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Cliente</th>
+      <th>Restaurante</th>
+      <th>data</th>
+      <th>Hora</th>
+      <th>Nº de Pessoas</th>
+      <th>Situação</th>
+      <th>Observações</th>
+    </tr>
+    <tr>
+      <th>
+        <p-columnFilter type="text" field="nome"></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="nome_restaurante"></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="data"></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="horas"></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="nPessoas"></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="situacao"></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="observacoes"></p-columnFilter>
+      </th>
+
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-resinfo>
+    <tr [pSelectableRow]="resinfo">
+      <td>{{ resinfo.nome }}</td>
+      <td>{{ resinfo.nome_restaurante }}</td>
+      <td>{{ resinfo.data }}</td>
+      <td>{{ resinfo.horas }}</td>
+      <td>{{ resinfo.nPessoas }}</td>
+      <td><p-tag [rounded]="true" [severity]="estadoEncomenda(resinfo.situacao)" value="{{ resinfo.situacao }}"></p-tag></td>
+      <td>{{ resinfo.observacoes }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<div *ngIf="mEstado" class="mt-10 m flex flex-row justify-center">
+  <p-button icon="pi pi-check" label="Aceitar" (click)="updateEstado('Aceite')" styleClass="p-button-success"></p-button>
+  <p-button icon="pi pi-times"  label="Cancelar" (click)="updateEstado('Cancelada')" styleClass="p-button-danger"></p-button>
+</div>

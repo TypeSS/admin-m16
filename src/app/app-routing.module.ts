@@ -1,7 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ClientesComponent } from './pages/clientes/clientes.component';
+import { ReservasComponent } from './pages/reservas/reservas.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path:'', redirectTo:'/dashboard', pathMatch:'full'},
+  {path:'dashboard', component:DashboardComponent},
+  {path:'clientes', component:ClientesComponent},
+  {path:'reservas', component:ReservasComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
