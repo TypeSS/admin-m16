@@ -15,6 +15,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { UrlService } from 'src/services/url/url.service';
 import { TagModule } from 'primeng/tag';
 import { ButtonModule } from 'primeng/button';
+import { PaginatorModule } from 'primeng/paginator';
+
 
 
 
@@ -36,7 +38,8 @@ import { ButtonModule } from 'primeng/button';
     HttpClientModule,
     InputTextModule,
     TagModule,
-    ButtonModule
+    ButtonModule,
+    PaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

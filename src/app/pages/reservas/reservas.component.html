@@ -1,8 +1,12 @@
+
 <p-table [value]="resinfo"
   [globalFilterFields]="['nome', 'nome_restaurante', 'data', 'horas','nPessoas','situacao','observacoes']"
   selectionMode="single"
   [(selection)]="selectedRes"
   [tableStyle]="{ 'min-width': '50rem' }"
+  [paginator]="true"
+  [rows]="5"
+  [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
   (onRowSelect)="mudarEstado()">
   <ng-template pTemplate="header">
     <tr>
@@ -15,7 +19,7 @@
       <th>Observações</th>
     </tr>
     <tr>
-      <th>
+      <th >
         <p-columnFilter type="text" field="nome"></p-columnFilter>
       </th>
       <th>
@@ -56,3 +60,4 @@
   <p-button icon="pi pi-check" label="Aceitar" (click)="updateEstado('Aceite')" styleClass="p-button-success"></p-button>
   <p-button icon="pi pi-times"  label="Cancelar" (click)="updateEstado('Cancelada')" styleClass="p-button-danger"></p-button>
 </div>
+
