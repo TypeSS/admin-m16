@@ -16,6 +16,12 @@ import { UrlService } from 'src/services/url/url.service';
 import { TagModule } from 'primeng/tag';
 import { ButtonModule } from 'primeng/button';
 import { PaginatorModule } from 'primeng/paginator';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ListboxModule } from 'primeng/listbox';
+import { DialogModule } from 'primeng/dialog';
+import { MessagesModule } from 'primeng/messages';
+
+
 
 
 
@@ -39,7 +45,11 @@ import { PaginatorModule } from 'primeng/paginator';
     InputTextModule,
     TagModule,
     ButtonModule,
-    PaginatorModule
+    PaginatorModule,
+    MultiSelectModule,
+    ListboxModule,
+    DialogModule,
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
