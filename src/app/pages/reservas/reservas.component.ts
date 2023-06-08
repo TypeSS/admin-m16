@@ -26,20 +26,19 @@ export class ReservasComponent implements OnInit {
   ngOnInit() {
     this.reservas.getReservas().subscribe((res)=>{
       this.resinfo = res
-      console.log(this.resinfo)
     })
   }
 
-  confirmarRes(){
+ gerirRes(){
     this.mEstado = true;
     this.nlugares = this.selectedRes!.nPessoas
-    this.reservas.getMesasRes(this.selectedRes!.id_restaurante).subscribe((res)=>{
+    this.reservas.getMesasDispo(this.selectedRes!.id_restaurante).subscribe((res)=>{
       this.mesasres = res
     })
   }
 
 
-  confirmarEstado(situacao:string){
+  confirmarRes(situacao:string){
 
     console.log(this.selectedRes)
     const info = {
@@ -47,13 +46,25 @@ export class ReservasComponent implements OnInit {
       "id_reserva":this.selectedRes?.id_reserva
     };
 
-    this.reservas.mudarEstado(info).subscribe((res)=>{
-      console.log("sucesso!!")
-    })
+    //this.reservas.mudarEstado(info).subscribe((res)=>{
+      //console.log("sucesso!!")
+    //})
 
+    const ReservaMesa = this.mesasres.map((mesa) => {
+      return {
+        id_reserva: this.selectedRes!.id_reserva,
+        id_mesa: mesa.id_mesa,
+        data:this.selectedRes!.data,
+        horas: this.selectedRes!.horas,
+        id_restaurante: this.selectedRes!.id_restaurante,
+      };
+    });
 
+      this.reservas.mesaRes(ReservaMesa).subscribe((res)=>{
+        console.log("sucesso?")
+      })
 
-    window.location.reload();
+    console.log(ReservaMesa)
   }
 
 
@@ -78,6 +89,7 @@ export class ReservasComponent implements OnInit {
 
     if(this.nlugares <= this.totalLugares){
       this.maxlugares = true
+      this.mesasres = mesainfo
     }
     else{
       this.maxlugares = false

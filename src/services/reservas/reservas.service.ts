@@ -19,7 +19,13 @@ export class ReservasService {
     return this.http.put<any>(this.urlService.getUrl("estadoreserva"), estado)
   }
 
-  getMesasRes(id_restaurante:number):Observable<LugaresMesa[]>{
+  getMesasDispo(id_restaurante:number):Observable<LugaresMesa[]>{
     return this.http.get<LugaresMesa[]>(this.urlService.getUrl("mesasres/"+id_restaurante))
+  }
+
+
+  mesaRes(info:object[]):Observable<any>{
+    console.log(info)
+    return this.http.post<any>(this.urlService.getUrl("mesasres"), info)
   }
 }
