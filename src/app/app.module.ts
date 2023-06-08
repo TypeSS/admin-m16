@@ -20,6 +20,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { ListboxModule } from 'primeng/listbox';
 import { DialogModule } from 'primeng/dialog';
 import { MessagesModule } from 'primeng/messages';
+import { ProdutosComponent } from './pages/produtos/produtos.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 
@@ -34,6 +36,7 @@ import { MessagesModule } from 'primeng/messages';
     ReservasComponent,
     InfocardComponent,
     SidebarComponent,
+    ProdutosComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { MessagesModule } from 'primeng/messages';
     MultiSelectModule,
     ListboxModule,
     DialogModule,
-    MessagesModule
+    MessagesModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

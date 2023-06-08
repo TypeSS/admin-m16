@@ -1,0 +1,47 @@
+<div class="mb-20">
+  <p-button icon="pi pi-plus" label="Criar Produto" (onClick)="abrirProdModal()"></p-button>
+</div>
+
+
+<p-table [value]="produtos" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template pTemplate="header">
+      <tr>
+          <th>Nome</th>
+          <th>Descricao</th>
+          <th>Preco</th>
+          <th>Categoria</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-prod>
+      <tr>
+          <td>{{ prod.nomeproduto }}</td>
+          <td>{{ prod.descricao }}</td>
+          <td>{{ prod.preco | currency:"EUR" }}</td>
+          <td>{{ prod.categoria }}</td>
+      </tr>
+  </ng-template>
+</p-table>
+
+
+<p-dialog header="Header" [(visible)]="prodModal" [modal]="true"  [style]="{ width: '50vv'}">
+  <ng-template pTemplate="header">
+      <span class="text-xl font-bold">Criar Produto</span>
+  </ng-template>
+  <div class="flex flex-row justify-between">
+<div class="flex flex-col justify-center gap-12 items-center mr-10">
+  <input type="text" placeholder="Nome do Produto" [(ngModel)]="nomeproduto" [ngModelOptions]="{standalone: true}" pInputText />
+  <input type="text" pInputText placeholder="Descrição do Produto" [(ngModel)]="descricao" [ngModelOptions]="{standalone: true}"/>
+  <p-inputNumber placeholder="Preço" [(ngModel)]="preco" [ngModelOptions]="{standalone: true}"mode="currency" currency="EUR" locale="pt-PT"> </p-inputNumber>
+</div>
+<p-listbox [options]="categorias" optionLabel="categoria" [style]="{'width':'15rem'}"
+emptyMessage='Erro' (onClick)="id_categoria = $event.value.id_categoria"></p-listbox>
+</div>
+  <ng-template pTemplate="footer">
+      <div class="flex flex-row justify-center">
+        <p-button icon="pi pi-check" label="Criar" (onClick)="criarProd()" styleClass="mr-10"></p-button>
+        <p-button icon="pi pi-times"  label="Cancelar" (onClick)="prodModal = false"></p-button>
+      </div>
+  </ng-template>
+</p-dialog>
+
+

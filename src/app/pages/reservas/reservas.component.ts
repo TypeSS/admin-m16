@@ -46,9 +46,9 @@ export class ReservasComponent implements OnInit {
       "id_reserva":this.selectedRes?.id_reserva
     };
 
-    //this.reservas.mudarEstado(info).subscribe((res)=>{
-      //console.log("sucesso!!")
-    //})
+    this.reservas.mudarEstado(info).subscribe((res)=>{
+      console.log("sucesso!!")
+    })
 
     const ReservaMesa = this.mesasres.map((mesa) => {
       return {
