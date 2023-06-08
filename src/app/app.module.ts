@@ -22,7 +22,7 @@ import { DialogModule } from 'primeng/dialog';
 import { MessagesModule } from 'primeng/messages';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { DropdownModule } from 'primeng/dropdown';
-
+import { EncomendasComponent } from './pages/encomendas/encomendas.component';
 
 
 
@@ -37,7 +37,8 @@ import { DropdownModule } from 'primeng/dropdown';
     InfocardComponent,
     SidebarComponent,
     ProdutosComponent,
-  ],
+    EncomendasComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

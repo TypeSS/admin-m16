@@ -35,6 +35,7 @@ export class ReservasComponent implements OnInit {
     this.reservas.getMesasDispo(this.selectedRes!.id_restaurante).subscribe((res)=>{
       this.mesasres = res
     })
+    console.log(this.selectedRes)
   }
 
 

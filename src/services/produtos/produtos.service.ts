@@ -22,4 +22,8 @@ export class ProdutosService {
   criarProduto(produto:object):Observable<Produtos>{
     return this.http.post<Produtos>(this.urlService.getUrl("produto"),produto)
   }
+
+  updateProduto(produto:object):Observable<Produtos>{
+    return this.http.put<Produtos>(this.urlService.getUrl("updateProduto"), produto)
+  }
 }

@@ -1,72 +1,72 @@
 <div>
-
   <div class="card">
-    <p-table [value]="clientinfo" dataKey="id" [tableStyle]="{ 'min-width': '50rem' }">
-        <ng-template pTemplate="header">
-            <tr>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>Morada</th>
-                <th>Cod Postal</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-clientinfo let-editing="editing">
-            <tr>
-                <td [pEditableColumn]="clientinfo.nome" pEditableColumnField="code">
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="clientinfo.nome" />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ clientinfo.nome }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                <td [pEditableColumn]="clientinfo.email" pEditableColumnField="name">
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="clientinfo.email" required />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ clientinfo.email }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                <td [pEditableColumn]="clientinfo.telefone" pEditableColumnField="inventoryStatus">
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText [(ngModel)]="clientinfo.telefone" />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ clientinfo.telefone }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                <td [pEditableColumn]="clientinfo.morada" pEditableColumnField="price">
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="clientinfo.morada" />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ clientinfo.morada }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                <td [pEditableColumn]="clientinfo.codPostal" pEditableColumnField="price">
-                  <p-cellEditor>
-                      <ng-template pTemplate="input">
-                          <input pInputText type="text" [(ngModel)]="clientinfo.codPostal" />
-                      </ng-template>
-                      <ng-template pTemplate="output">
-                          {{ clientinfo.codPostal }}
-                      </ng-template>
-                  </p-cellEditor>
-              </td>
-            </tr>
-        </ng-template>
-    </p-table>
+    <p-table [value]="clientinfo"
+  [globalFilterFields]="['nome', 'email', 'telefone', 'morada','codPostal']"
+  selectionMode="single"
+  [(selection)]="selectedCli"
+  [paginator]="true"
+  [rows]="5"
+  [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
+  (onRowSelect)="clienteInfo()">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th>Morada</th>
+      <th>Código Postal</th>
+    </tr>
+    <tr>
+      <th>
+        <p-columnFilter type="text" field="nome"></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="email"></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="telefone"></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="morada"></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="codPostal"></p-columnFilter>
+      </th>
+
+
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-cliente>
+    <tr [pSelectableRow]="cliente">
+      <td>{{ cliente.nome }}</td>
+      <td>{{ cliente.email }}</td>
+      <td>{{ cliente.telefone }}</td>
+      <td>{{ cliente.morada }}</td>
+      <td>{{ cliente.codPostal }}</td>
+    </tr>
+  </ng-template>
+</p-table>
 </div>
 
+<p-dialog header="Header" [(visible)]="cliModal" [modal]="true"  [style]="{ width: '50vv'}">
+  <ng-template pTemplate="header">
+      <span class="text-xl font-bold">Atualizar Cliente</span>
+  </ng-template>
+  <div class="flex flex-row justify-between">
+<div class="flex flex-row justify-between gap-12 items-center mr-10" *ngIf="selectedCli">
+  <input type="text" pInputText [(ngModel)]="this.selectedCli!.nome" [ngModelOptions]="{standalone: true}" />
+  <input type="text" pInputText [(ngModel)]="this.selectedCli!.email" [ngModelOptions]="{standalone: true}" />
+  <p-inputNumber type="text" [(ngModel)]="this.selectedCli!.telefone" [ngModelOptions]="{standalone: true}" />
+  <input type="text" pInputText [(ngModel)]="this.selectedCli!.morada" [ngModelOptions]="{standalone: true}" />
+  <input type="text" pInputText [(ngModel)]="this.selectedCli!.codPostal" [ngModelOptions]="{standalone: true}" />
 
+</div>
+  </div>
+  <ng-template pTemplate="footer">
+      <div class="flex flex-row justify-center">
+        <p-button icon="pi pi-check" label="Atualizar" (onClick)="updateCliente()" ></p-button>
+        <p-button icon="pi pi-times"  label="Cancelar" (onClick)="cliModal = false"></p-button>
+      </div>
+  </ng-template>
+</p-dialog>
 </div>

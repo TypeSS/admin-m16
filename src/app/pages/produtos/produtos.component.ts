@@ -11,12 +11,15 @@ export class ProdutosComponent implements OnInit {
 produtos:Produtos[] = [];
 categorias: Categoria[] = [];
 prodModal:boolean = false;
-
+uProdModal:boolean = false;
+selectedProd?:Produtos;
 prodinfo?: object;
 nomeproduto:string = "";
 descricao:string ="";
 preco?:number;
 id_categoria?:number;
+
+selectedCategoria:object = {};
 
 
 constructor(private prodService: ProdutosService){
@@ -27,14 +30,31 @@ constructor(private prodService: ProdutosService){
       console.log(this.produtos)
     })
 
-
+    this.prodService.getCategoria().subscribe((res)=>{
+      this.categorias = res;
+    })
   }
 
   abrirProdModal(){
     this.prodModal = true;
+  }
 
-    this.prodService.getCategoria().subscribe((res)=>{
-      this.categorias = res;
+  prodInfo(){
+    console.log(this.selectedProd)
+    this.uProdModal = true;
+
+  }
+
+  updateProd(){
+    this.prodinfo = {
+      nomeproduto:this.selectedProd!.nomeproduto,
+      descricao:this.selectedProd!.descricao,
+      preco:this.selectedProd!.preco,
+      id_categoria:this.id_categoria
+    }
+
+    this.prodService.updateProduto(this.prodinfo).subscribe((res)=>{
+      console.log("sucesso?")
     })
   }
 

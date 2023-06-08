@@ -3,6 +3,7 @@ export interface Produtos {
   descricao: string;
   preco: number;
   categoria: string;
+  id_categoria:number;
 }
 
 export interface Categoria {
