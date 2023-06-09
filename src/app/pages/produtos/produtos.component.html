@@ -1,9 +1,12 @@
-<div class="mb-20">
+
+<div class="flex flex-col gap-5">
+
+<div class="m-5">
   <p-button icon="pi pi-plus" label="Criar Produto" (onClick)="abrirProdModal()"></p-button>
 </div>
-
-
-<p-table [value]="produtos"
+  
+<div class="mx-10">
+  <p-table [value]="produtos"
 [globalFilterFields]="['nomeproduto', 'descricao', 'preco', 'categoria']"
 selectionMode="single"
 [(selection)]="selectedProd"
@@ -31,6 +34,7 @@ selectionMode="single"
     <th>
       <p-columnFilter type="text" field="categoria"></p-columnFilter>
     </th>
+
   </tr>
 </ng-template>
 <ng-template pTemplate="body" let-produto>
@@ -42,7 +46,6 @@ selectionMode="single"
   </tr>
 </ng-template>
 </p-table>
-
 
 <p-dialog header="Header" [(visible)]="prodModal" [modal]="true"  [style]="{ width: '50vv'}">
   <ng-template pTemplate="header">
@@ -84,6 +87,8 @@ emptyMessage='Erro' (onClick)="id_categoria = $event.value.id_categoria"></p-lis
         <p-button icon="pi pi-times"  label="Cancelar" (onClick)="uProdModal = false"></p-button>
       </div>
   </ng-template>
-</p-dialog>
+</p-dialog>  
+</div>
+</div>
 
 

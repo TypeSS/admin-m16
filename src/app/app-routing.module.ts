@@ -4,13 +4,17 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { ReservasComponent } from './pages/reservas/reservas.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
+import { EncomendasComponent } from './pages/encomendas/encomendas.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'/dashboard', pathMatch:'full'},
   {path:'dashboard', component:DashboardComponent},
   {path:'clientes', component:ClientesComponent},
   {path:'reservas', component:ReservasComponent},
-  {path:'produtos', component:ProdutosComponent}
+  {path:'produtos', component:ProdutosComponent},  
+  {path:'encomendas', component:EncomendasComponent},
+
+  
 ];
 
 @NgModule({
