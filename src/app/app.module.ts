@@ -24,6 +24,7 @@ import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { EncomendasComponent } from './pages/encomendas/encomendas.component';
 import { FileUploadModule } from 'primeng/fileupload';
+import {ImageModule} from 'primeng/image';
 
 
 
@@ -56,7 +57,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     DialogModule,
     MessagesModule,
     DropdownModule,
-    FileUploadModule
+    FileUploadModule,
+    ImageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

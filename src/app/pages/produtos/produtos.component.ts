@@ -17,11 +17,11 @@ selectedProd?:Produtos;
 prodinfo?: Produtos;
 nomeproduto:string = "";
 descricao:string ="";
-imagem:string = "";
 preco?:number;
 id_categoria?:number;
 file:any;
 selectedCategoria:object = {};
+filepath: string = "";
 
 
 constructor(private prodService: ProdutosService){
@@ -66,7 +66,7 @@ constructor(private prodService: ProdutosService){
       descricao: this.descricao,
       preco: this.preco!,
       id_categoria:this.id_categoria,
-      imagem:this.imagem
+      imagem:this.file.name
     }
 
 
@@ -83,12 +83,7 @@ constructor(private prodService: ProdutosService){
     this.file = event.target.files[0];
     console.log(this.file)
 
-
-
-    //Guardar nome do ficheiro
-    const fileName: string = this.file.name;
-    this.imagem = fileName;
-    console.log(fileName);
+    this.filepath = event.target.value
   }
 
 }

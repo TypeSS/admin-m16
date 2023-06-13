@@ -65,11 +65,12 @@ selectionMode="single"
 </div>
 <p-listbox [options]="categorias" optionLabel="categoria" [style]="{'width':'15rem'}"
 emptyMessage='Erro' (onClick)="id_categoria = $event.value.id_categoria"></p-listbox>
+<img src="{{file}}">
 </div>
   <ng-template pTemplate="footer">
       <div class="flex flex-row justify-center">
-        <p-button icon="pi pi-check" label="Criar" (onClick)="criarProd()" styleClass="mr-10"></p-button>
-        <p-button icon="pi pi-times"  label="Cancelar" (onClick)="prodModal = false"></p-button>
+        <p-button icon="pi pi-check" class="" label="Criar" (onClick)="criarProd()" styleClass="mr-10"></p-button>
+        <p-button icon="pi pi-times"   label="Cancelar" (onClick)="prodModal = false"></p-button>
       </div>
   </ng-template>
 </p-dialog>
