@@ -19,8 +19,19 @@ export class ProdutosService {
     return this.http.get<Categoria[]>(this.urlService.getUrl("categorias"));
   }
 
-  criarProduto(produto:object):Observable<Produtos>{
-    return this.http.post<Produtos>(this.urlService.getUrl("produto"),produto)
+  criarProduto(produto: Produtos, file: File): Observable<Produtos> {
+    const formData: FormData = new FormData();
+    formData.append('nomeproduto', produto.nomeproduto);
+    formData.append('descricao', produto.descricao);
+    formData.append('preco', String(produto.preco));
+    formData.append('id_categoria', String(produto.id_categoria));
+    formData.append('imagem', file.name);
+    formData.append('ficheiro', file)
+
+
+    console.log(formData)
+
+    return this.http.post<Produtos>(this.urlService.getUrl('produto'), formData);
   }
 
   updateProduto(produto:object):Observable<Produtos>{

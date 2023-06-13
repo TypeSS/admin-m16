@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FileUploadEvent } from 'primeng/fileupload';
 import { Categoria, Produtos } from 'src/models/produtos/produtos';
 import { ProdutosService } from 'src/services/produtos/produtos.service';
 
@@ -13,12 +14,13 @@ categorias: Categoria[] = [];
 prodModal:boolean = false;
 uProdModal:boolean = false;
 selectedProd?:Produtos;
-prodinfo?: object;
+prodinfo?: Produtos;
 nomeproduto:string = "";
 descricao:string ="";
+imagem:string = "";
 preco?:number;
 id_categoria?:number;
-
+file:any;
 selectedCategoria:object = {};
 
 
@@ -45,7 +47,7 @@ constructor(private prodService: ProdutosService){
 
   }
 
-  updateProd(){
+ /* updateProd(){
     this.prodinfo = {
       nomeproduto:this.selectedProd!.nomeproduto,
       descricao:this.selectedProd!.descricao,
@@ -56,21 +58,37 @@ constructor(private prodService: ProdutosService){
     this.prodService.updateProduto(this.prodinfo).subscribe((res)=>{
       console.log("sucesso?")
     })
-  }
+  }*/
 
   criarProd(){
     this.prodinfo = {
       nomeproduto: this.nomeproduto,
       descricao: this.descricao,
       preco: this.preco!,
-      id_categoria:this.id_categoria
+      id_categoria:this.id_categoria,
+      imagem:this.imagem
     }
 
-    this.prodService.criarProduto(this.prodinfo).subscribe((res)=>{
+
+    if (!this.file) return;
+
+    this.prodService.criarProduto(this.prodinfo, this.file).subscribe((res)=>{
     console.log("sucesso")
     })
 
     this.prodModal = false
+  }
+
+  onFileSelected(event: any) {
+    this.file = event.target.files[0];
+    console.log(this.file)
+
+
+
+    //Guardar nome do ficheiro
+    const fileName: string = this.file.name;
+    this.imagem = fileName;
+    console.log(fileName);
   }
 
 }

@@ -26,6 +26,7 @@ export class ReservasComponent implements OnInit {
   ngOnInit() {
     this.reservas.getReservas().subscribe((res)=>{
       this.resinfo = res
+      console.log(this.resinfo);
     })
   }
 
@@ -40,7 +41,6 @@ export class ReservasComponent implements OnInit {
 
 
   confirmarRes(situacao:string){
-
     console.log(this.selectedRes)
     const info = {
       "situacao": situacao,
@@ -69,7 +69,7 @@ export class ReservasComponent implements OnInit {
   }
 
 
-  estadoEncomenda(estado: any){
+  estadoReserva(estado: any){
     switch(estado){
       case 'Pendente':
         return 'warning';

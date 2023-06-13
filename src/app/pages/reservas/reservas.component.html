@@ -1,5 +1,5 @@
 
-<p-table [value]="resinfo" 
+<p-table [value]="resinfo"
 class="w-1/2"
   [globalFilterFields]="['nome', 'nome_restaurante', 'data', 'horas','nPessoas','situacao','observacoes']"
   selectionMode="single"
@@ -50,7 +50,7 @@ class="w-1/2"
       <td>{{ resinfo.data }}</td>
       <td>{{ resinfo.horas }}</td>
       <td>{{ resinfo.nPessoas }}</td>
-      <td><p-tag [rounded]="true" [severity]="estadoEncomenda(resinfo.situacao)" value="{{ resinfo.situacao }}"></p-tag></td>
+      <td><p-tag [rounded]="true" [severity]="estadoReserva(resinfo.situacao)" value="{{ resinfo.situacao }}"></p-tag></td>
       <td>{{ resinfo.observacoes }}</td>
     </tr>
   </ng-template>

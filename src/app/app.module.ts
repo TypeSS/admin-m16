@@ -23,6 +23,7 @@ import { MessagesModule } from 'primeng/messages';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { EncomendasComponent } from './pages/encomendas/encomendas.component';
+import { FileUploadModule } from 'primeng/fileupload';
 
 
 
@@ -54,7 +55,8 @@ import { EncomendasComponent } from './pages/encomendas/encomendas.component';
     ListboxModule,
     DialogModule,
     MessagesModule,
-    DropdownModule
+    DropdownModule,
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
