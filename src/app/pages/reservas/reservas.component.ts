@@ -52,6 +52,8 @@ export class ReservasComponent implements OnInit {
 
 
   confirmarRes(situacao:string){
+
+    if (situacao == "Aceite"){
     console.log(this.selectedRes)
     const info = {
       "situacao": situacao,
@@ -77,7 +79,11 @@ export class ReservasComponent implements OnInit {
         console.log("sucesso?")
       })
 
-    console.log(ReservaMesa)
+      this.mEstado = false;
+    }
+    else{
+      this.mEstado = false;
+    }
   }
 
 
