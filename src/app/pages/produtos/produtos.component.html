@@ -7,7 +7,7 @@
       Produtos
         </p>
         <hr class=" border-yellow-500 border-b-2 w-[200px]"/>
-      
+
 <div class="my-5 ">
   <p-button icon="pi pi-plus" label="Criar Produto" (onClick)="abrirProdModal()"></p-button>
 </div>
@@ -51,7 +51,6 @@ selectionMode="single"
     <td>{{ produto.descricao }}</td>
     <td>{{ produto.preco }}</td>
     <td><img [src]="'https://imgmod16.blob.core.windows.net/teste/' + produto.imagem" [alt]="produto.nomeproduto" width="100" class="shadow-4 w-[100px] h-[60px]" /></td>
-
     <td>{{ produto.categoria }}</td>
   </tr>
 </ng-template>
@@ -70,9 +69,11 @@ selectionMode="single"
   <p-inputNumber placeholder="Preço" [(ngModel)]="preco" [ngModelOptions]="{standalone: true}"mode="currency" currency="EUR" locale="pt-PT"> </p-inputNumber>
   <input type="file" class="text-white border-2 rounded-md border-yellow-500 file:bg-yellow-500 file:border-yellow-500 file:text-black" (change)="onFileSelected($event)"/>
 </div>
+<div class="flex flex-col">
 <p-listbox [options]="categorias" optionLabel="categoria" [style]="{'width':'15rem'}"
 emptyMessage='Erro' (onClick)="id_categoria = $event.value.id_categoria"></p-listbox>
-<img src="{{file}}">
+<img src="{{filepath}}">
+</div>
 </div>
   <ng-template pTemplate="footer">
       <div class="flex flex-row justify-center">
@@ -94,12 +95,17 @@ emptyMessage='Erro' (onClick)="id_categoria = $event.value.id_categoria"></p-lis
   <input type="text" pInputText [(ngModel)]="this.selectedProd!.descricao" [ngModelOptions]="{standalone: true}" />
   <p-inputNumber type="text" [(ngModel)]="this.selectedProd!.preco" [ngModelOptions]="{standalone: true}" />
 </div>
-<p-listbox [options]="categorias" optionLabel="categoria" [(ngModel)]="selectedCategoria" [ngModelOptions]="{standalone: true}" [style]="{'width':'15rem'}"
-emptyMessage='Erro' (onClick)="id_categoria = $event.value.id_categoria"></p-listbox>
+<div class="flex flex-col">
+<p-listbox [options]="categorias" optionValue="id_categoria" optionLabel="categoria" [style]="{'width':'15rem'}"
+emptyMessage='Erro' [(ngModel)]="this.selectedProd!.id_categoria"
+[ngModelOptions]="{standalone: true}"></p-listbox>
+<img src="https://imgmod16.blob.core.windows.net/teste/{{selectedProd.imagem}}">
+</div>
   </div>
   <ng-template pTemplate="footer">
       <div class="flex flex-row justify-center">
-        <p-button icon="pi pi-check" label="Atualizar"  ></p-button>
+        <p-button icon="pi pi-check" label="Atualizar" (onClick)="updateProd()"  ></p-button>
+        <p-button icon="pi pi-trash" label="Apagar" (onClick)="deleteProd()"  ></p-button>
         <p-button icon="pi pi-times"  label="Cancelar" (onClick)="uProdModal = false"></p-button>
       </div>
   </ng-template>

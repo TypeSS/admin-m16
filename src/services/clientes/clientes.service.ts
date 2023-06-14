@@ -18,4 +18,8 @@ export class ClientesService {
   updateCliente(info:Clientes):Observable<Clientes>{
     return this.http.put<Clientes>(this.urlService.getUrl("updateuser"), info)
   }
+
+  deleteCli(id:number):Observable<any>{
+    return this.http.delete(this.urlService.getUrl("cliente/"+id))
+  }
 }

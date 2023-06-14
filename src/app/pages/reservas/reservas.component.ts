@@ -19,6 +19,8 @@ export class ReservasComponent implements OnInit {
   mEstado: boolean = false;
   mesas?: LugaresMesa[];
   maxlugares:boolean = false;
+  labelLugares:string = "";
+
     constructor(private reservas: ReservasService){
 
   }
@@ -41,8 +43,9 @@ export class ReservasComponent implements OnInit {
     this.reservas.getMesasDispo(this.selectedRes!.id_restaurante).subscribe((res)=>{
       this.mesasres = res
     })
-    console.log(this.selectedRes)
+    this.mesas = []
     this.totalLugares = 0;
+    this.labelLugares = "Lugares Insuficientes"
   }
 
   }
@@ -100,9 +103,11 @@ export class ReservasComponent implements OnInit {
     if(this.nlugares <= this.totalLugares){
       this.maxlugares = true
       this.mesasres = mesainfo
+      this.labelLugares = "Lugares Suficientes"
     }
     else{
       this.maxlugares = false
+      this.labelLugares = "Lugares Insuficientes"
     }
   }
 }

@@ -3,7 +3,7 @@
     Clientes
       </p>
       <hr class=" border-yellow-500 border-b-2 w-[200px]"/>
-    
+
 
 </div>
 <div>
@@ -73,6 +73,7 @@
   <ng-template pTemplate="footer">
       <div class="flex flex-row justify-center">
         <p-button icon="pi pi-check" label="Atualizar" (onClick)="updateCliente()" ></p-button>
+        <p-button icon="pi pi-trash" label="Apagar" (onClick)="deleteCliente()"  ></p-button>
         <p-button icon="pi pi-times"  label="Cancelar" (onClick)="cliModal = false"></p-button>
       </div>
   </ng-template>

@@ -34,7 +34,12 @@ export class ProdutosService {
     return this.http.post<Produtos>(this.urlService.getUrl('produto'), formData);
   }
 
-  updateProduto(produto:object):Observable<Produtos>{
+  updateProduto(produto:Produtos):Observable<Produtos>{
     return this.http.put<Produtos>(this.urlService.getUrl("updateProduto"), produto)
+  }
+
+  deleteProduto(id:number):Observable<any>{
+    console.log(id)
+    return this.http.delete(this.urlService.getUrl("produto/"+id))
   }
 }

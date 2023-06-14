@@ -32,4 +32,10 @@ export class ClientesComponent implements OnInit {
     })
     this.cliModal = false;
   }
+
+  deleteCliente(){
+    this.clientes.deleteCli(this.selectedCli!.id_utilizador).subscribe()
+    this.cliModal = false;
+    window.location.reload();
+  }
 }

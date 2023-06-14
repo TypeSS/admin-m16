@@ -20,8 +20,7 @@ descricao:string ="";
 preco?:number;
 id_categoria?:number;
 file:any;
-selectedCategoria:object = {};
-filepath: string = "";
+filepath:any;
 
 
 constructor(private prodService: ProdutosService){
@@ -29,8 +28,7 @@ constructor(private prodService: ProdutosService){
   ngOnInit() {
     this.prodService.getProdutos().subscribe((res)=>{
       this.produtos = res
-      console.log(this.produtos)
-    })
+        })
 
     this.prodService.getCategoria().subscribe((res)=>{
       this.categorias = res;
@@ -39,29 +37,43 @@ constructor(private prodService: ProdutosService){
 
   abrirProdModal(){
     this.prodModal = true;
+    this.nomeproduto = "";
+    this.descricao ="";
+    this.preco = undefined;
+    this.id_categoria = 0;
   }
 
   prodInfo(){
-    console.log(this.selectedProd)
     this.uProdModal = true;
-
+    console.log(this.categorias)
+    console.log(this.selectedProd)
   }
 
- /* updateProd(){
+ updateProd(){
     this.prodinfo = {
+      id_produto:this.selectedProd!.id_produto,
       nomeproduto:this.selectedProd!.nomeproduto,
       descricao:this.selectedProd!.descricao,
       preco:this.selectedProd!.preco,
-      id_categoria:this.id_categoria
+      id_categoria:this.selectedProd!.id_categoria
     }
 
-    this.prodService.updateProduto(this.prodinfo).subscribe((res)=>{
-      console.log("sucesso?")
-    })
-  }*/
+
+    this.prodService.updateProduto(this.prodinfo).subscribe();
+
+    this.uProdModal = false;
+  }
+
+
+  deleteProd(){
+    this.prodService.deleteProduto(this.selectedProd!.id_produto).subscribe()
+    this.uProdModal = false;
+  }
+
 
   criarProd(){
     this.prodinfo = {
+      id_produto:0,
       nomeproduto: this.nomeproduto,
       descricao: this.descricao,
       preco: this.preco!,
@@ -83,7 +95,18 @@ constructor(private prodService: ProdutosService){
     this.file = event.target.files[0];
     console.log(this.file)
 
-    this.filepath = event.target.value
+    var reader = new FileReader();
+
+    reader.onload = (event: any) => {
+      this.filepath = event.target.result;
+    };
+
+    reader.onerror = (event: any) => {
+      console.log("File could not be read: " + event.target.error.code);
+    };
+
+    reader.readAsDataURL(event.target.files[0]);
+
+  }
   }
 
-}
