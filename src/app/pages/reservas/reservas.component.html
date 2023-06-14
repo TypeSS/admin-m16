@@ -1,6 +1,12 @@
+<div class="flex flex-col self-start m-10 ">
+  <p class="text-[36px] font-bold text-yellow-500">
+Reservas
+  </p>
+  <hr class=" border-yellow-500 border-b-2 w-[200px]"/>
 
+<div class="my-6">
 <p-table [value]="resinfo"
-class="w-1/2"
+class="w-2/3"
   [globalFilterFields]="['nome', 'nome_restaurante', 'data', 'horas','nPessoas','situacao','observacoes']"
   selectionMode="single"
   [(selection)]="selectedRes"
@@ -62,10 +68,14 @@ class="w-1/2"
   </ng-template>
     <div class="flex flex-row justify-around">
       <p-listbox [options]="mesasres" optionLabel="id_mesa" [style]="{'width':'15rem'}"
-      [multiple]="true" emptyMessage='Não há mesas disponíveis' [(ngModel)]="mesas" [ngModelOptions]="{standalone: true}" (onClick)="getLugares($event.value)" [metaKeySelection]="false"></p-listbox>
+      [multiple]="true" emptyMessage='Não há mesas disponíveis' [(ngModel)]="mesas"  [ngModelOptions]="{standalone: true}" (onClick)="getLugares($event.value)" [metaKeySelection]="false"></p-listbox>
 
-    <div class="bg-gray-800 shadow-md">
-      <span>{{totalLugares}}<span>/</span><span>{{nlugares}}</span></span>
+    <div class="bg-[#1D1D1D] shadow-[0px_20px_20px_10px_#00000024] w-64 h-36 rounded-lg ">
+      <h1 class="text-2xl mt-4 ml-3">Lugares</h1>
+      <div class="w-20 h-8 ml-3 border my-2 border-yellow-500 flex items-center justify-center rounded-full">
+        <span class="">{{totalLugares}}<span>/</span><span>{{nlugares}}</span></span>
+      </div>
+      <p class="ml-3">Lugares disponíveis/indisponiveis</p>
     </div>
     </div>
   <ng-template pTemplate="footer">
@@ -76,3 +86,4 @@ class="w-1/2"
   </ng-template>
 </p-dialog>
 
+</div>

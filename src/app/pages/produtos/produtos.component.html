@@ -1,7 +1,14 @@
 
-<div class="flex flex-col gap-5">
 
-<div class="m-5">
+
+<div class="flex flex-col gap-5">
+  <div class="flex flex-col self-start m-10 ">
+    <p class="text-[36px] font-bold text-yellow-500">
+      Produtos
+        </p>
+        <hr class=" border-yellow-500 border-b-2 w-[200px]"/>
+      
+<div class="my-5 ">
   <p-button icon="pi pi-plus" label="Criar Produto" (onClick)="abrirProdModal()"></p-button>
 </div>
 
@@ -43,7 +50,7 @@ selectionMode="single"
     <td>{{ produto.nomeproduto }}</td>
     <td>{{ produto.descricao }}</td>
     <td>{{ produto.preco }}</td>
-    <td><img [src]="'https://imgmod16.blob.core.windows.net/teste/' + produto.imagem" [alt]="produto.nomeproduto" width="100" class="shadow-4" /></td>
+    <td><img [src]="'https://imgmod16.blob.core.windows.net/teste/' + produto.imagem" [alt]="produto.nomeproduto" width="100" class="shadow-4 w-[100px] h-[60px]" /></td>
 
     <td>{{ produto.categoria }}</td>
   </tr>
