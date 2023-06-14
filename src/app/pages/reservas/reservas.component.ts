@@ -31,7 +31,14 @@ export class ReservasComponent implements OnInit {
   }
 
  gerirRes(){
+
+  if(this.selectedRes?.situacao == "Aceite" || this.selectedRes?.situacao == "Cancelada"){
+    this.mEstado = false;
+  }
+  else{
     this.mEstado = true;
+  }
+
     this.nlugares = this.selectedRes!.nPessoas
     this.reservas.getMesasDispo(this.selectedRes!.id_restaurante).subscribe((res)=>{
       this.mesasres = res
