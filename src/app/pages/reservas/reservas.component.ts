@@ -37,13 +37,14 @@ export class ReservasComponent implements OnInit {
   }
   else{
     this.mEstado = true;
-  }
-
     this.nlugares = this.selectedRes!.nPessoas
     this.reservas.getMesasDispo(this.selectedRes!.id_restaurante).subscribe((res)=>{
       this.mesasres = res
     })
     console.log(this.selectedRes)
+    this.totalLugares = 0;
+  }
+
   }
 
 
@@ -53,6 +54,7 @@ export class ReservasComponent implements OnInit {
       "situacao": situacao,
       "id_reserva":this.selectedRes?.id_reserva
     };
+
 
     this.reservas.mudarEstado(info).subscribe((res)=>{
       console.log("sucesso!!")
