@@ -87,7 +87,7 @@ emptyMessage='Erro' (onClick)="id_categoria = $event.value.id_categoria"></p-lis
 <!--Update-->
 <p-dialog header="Header" [(visible)]="uProdModal" [modal]="true"  [style]="{ width: '50vv'}">
   <ng-template pTemplate="header">
-      <span class="text-xl font-bold">Atualizar Cliente</span>
+      <span class="text-xl font-bold">Atualizar Produto</span>
   </ng-template>
   <div class="flex flex-row justify-between" *ngIf="selectedProd">
 <div class="flex flex-col justify-between gap-12 items-center mr-10">
@@ -99,7 +99,11 @@ emptyMessage='Erro' (onClick)="id_categoria = $event.value.id_categoria"></p-lis
 <p-listbox [options]="categorias" optionValue="id_categoria" optionLabel="categoria" [style]="{'width':'15rem'}"
 emptyMessage='Erro' [(ngModel)]="this.selectedProd!.id_categoria"
 [ngModelOptions]="{standalone: true}"></p-listbox>
-<img src="https://imgmod16.blob.core.windows.net/teste/{{selectedProd.imagem}}">
+<div class="border border-yellow-500">
+  <span class="text-xl font-bold">Preview Imagem:</span>
+  <img class="shadow-4 w-100 h-60 m-5" src="https://imgmod16.blob.core.windows.net/teste/{{selectedProd.imagem}}" alt="Imagem de visualização">
+</div>
+
 </div>
   </div>
   <ng-template pTemplate="footer">
