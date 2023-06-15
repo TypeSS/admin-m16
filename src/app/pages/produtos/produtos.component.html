@@ -99,11 +99,11 @@ emptyMessage='Erro' (onClick)="id_categoria = $event.value.id_categoria"></p-lis
 <p-listbox [options]="categorias" optionValue="id_categoria" optionLabel="categoria" [style]="{'width':'15rem'}"
 emptyMessage='Erro' [(ngModel)]="this.selectedProd!.id_categoria"
 [ngModelOptions]="{standalone: true}"></p-listbox>
-<div class="my-5">
+<div class="mt-12">
   
   <span class="text-sm font-bold text-yellow-500">Preview Imagem:</span>
   <hr class=" border-yellow-500 border-b-2 w-[50px]"/>
-  <img class="shadow-4 my-3 w-[240px] h-[150px]" src="https://imgmod16.blob.core.windows.net/teste/{{selectedProd.imagem}}" alt="Imagem de visualização">
+  <img class="shadow-4  w-[240px] h-[150px]" src="https://imgmod16.blob.core.windows.net/teste/{{selectedProd.imagem}}" alt="Imagem de visualização">
 </div>
 
 </div>
