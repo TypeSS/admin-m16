@@ -67,7 +67,7 @@ selectionMode="single"
   <input type="text" placeholder="Nome do Produto" [(ngModel)]="nomeproduto" [ngModelOptions]="{standalone: true}" pInputText />
   <input type="text" pInputText placeholder="Descrição do Produto" [(ngModel)]="descricao" [ngModelOptions]="{standalone: true}"/>
   <p-inputNumber placeholder="Preço" [(ngModel)]="preco" [ngModelOptions]="{standalone: true}"mode="currency" currency="EUR" locale="pt-PT"> </p-inputNumber>
-  <input type="file" class="text-white border-2 border-yellow-500 rounded-md file:bg-yellow-500 file:border-yellow-500 file:text-black" (change)="onFileSelected($event)"/>
+  <input type="file" class="text-white border-2 border-yellow-500 rounded-md file:bg-yellow-500 file:border-yellow-500 file:text-black w-[200px]" (change)="onFileSelected($event)"/>
 </div>
 <div class="flex flex-col">
 <p-listbox [options]="categorias" optionLabel="categoria" [style]="{'width':'15rem'}"
