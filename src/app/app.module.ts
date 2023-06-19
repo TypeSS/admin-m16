@@ -25,6 +25,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { EncomendasComponent } from './pages/encomendas/encomendas.component';
 import { FileUploadModule } from 'primeng/fileupload';
 import {ImageModule} from 'primeng/image';
+import { LoginComponent } from './pages/login/login.component';
+import { ToastModule } from 'primeng/toast';
 
 
 
@@ -40,6 +42,7 @@ import {ImageModule} from 'primeng/image';
     SidebarComponent,
     ProdutosComponent,
     EncomendasComponent,
+    LoginComponent,
     ],
   imports: [
     BrowserModule,
@@ -58,7 +61,8 @@ import {ImageModule} from 'primeng/image';
     MessagesModule,
     DropdownModule,
     FileUploadModule,
-    ImageModule
+    ImageModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]
