@@ -27,6 +27,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import {ImageModule} from 'primeng/image';
 import { LoginComponent } from './pages/login/login.component';
 import { ToastModule } from 'primeng/toast';
+import { AdminpagesComponent } from './pages/adminpages/adminpages.component';
 
 
 
@@ -43,6 +44,7 @@ import { ToastModule } from 'primeng/toast';
     ProdutosComponent,
     EncomendasComponent,
     LoginComponent,
+    AdminpagesComponent,
     ],
   imports: [
     BrowserModule,

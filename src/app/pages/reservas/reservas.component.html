@@ -53,7 +53,7 @@ class="w-2/3"
     <tr [pSelectableRow]="resinfo">
       <td>{{ resinfo.nome }}</td>
       <td>{{ resinfo.nome_restaurante }}</td>
-      <td>{{ resinfo.data }}</td>
+      <td>{{ resinfo.data | date: 'dd/MM/yy' }}</td>
       <td>{{ resinfo.horas }}</td>
       <td>{{ resinfo.nPessoas }}</td>
       <td><p-tag [rounded]="true" [severity]="estadoReserva(resinfo.situacao)" value="{{ resinfo.situacao }}"></p-tag></td>

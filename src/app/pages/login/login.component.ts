@@ -28,7 +28,7 @@ export class LoginComponent {
       if (res.message == "Login realizado com sucesso"){
       localStorage.setItem('id',res.id)
       this.verif = false;
-      this.router.navigateByUrl('/dashboard')
+      this.router.navigateByUrl('/admin/dashboard')
       this.messageService.add({ severity: 'success', summary: 'Sucesso', detail: 'Login realizado' });
       }
       else if (res.message == "Senha Errada"){
