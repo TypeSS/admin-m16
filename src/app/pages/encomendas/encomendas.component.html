@@ -72,7 +72,7 @@
       </ng-template>
   </p-listbox>
       <div class="flex flex-col">
-        <p-dropdown [options]="estados" [(ngModel)]="selectedEstado" dataKey="estado]" optionLabel="estado"></p-dropdown>
+        <p-dropdown [options]="estados" [(ngModel)]="selectedEstado" [ngModelOptions]="{standalone: true}" optionLabel="estado"></p-dropdown>
 
       </div>
     </div>

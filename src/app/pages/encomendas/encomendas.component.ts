@@ -32,9 +32,6 @@ export class EncomendasComponent implements OnInit{
   encInfo(){
     this.selectedEstado!.estado = ''
     this.abrirEnc = true;
-    console.log(this.selectedEnc?.estado)
-    this.selectedEstado!.estado = this.selectedEnc!.estado
-    console.log(this.selectedEstado?.estado)
     this.restService.getProdEnc(this.selectedEnc!.id_encomenda).subscribe((res)=>{
       this.prodInfo = res
     });

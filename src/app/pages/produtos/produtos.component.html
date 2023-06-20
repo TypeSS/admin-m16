@@ -72,7 +72,13 @@ selectionMode="single"
 <div class="flex flex-col">
 <p-listbox [options]="categorias" optionLabel="categoria" [style]="{'width':'15rem'}"
 emptyMessage='Erro' (onClick)="id_categoria = $event.value.id_categoria"></p-listbox>
-<img src="{{filepath}}">
+<div>
+  <p class="text-sm font-bold text-yellow-500">
+    Preview Imagem
+      </p>
+      <hr class=" border-yellow-500 border-b-2 w-[200px] mb-4"/>
+        <img src="{{filepath}}" class="w-[150px] h-[110px]">
+</div>
 </div>
 </div>
   <ng-template pTemplate="footer">
