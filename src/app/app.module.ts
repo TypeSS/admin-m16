@@ -29,6 +29,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ToastModule } from 'primeng/toast';
 import { AdminpagesComponent } from './pages/adminpages/adminpages.component';
 import { FuncionariosComponent } from './pages/funcionarios/funcionarios.component';
+import { ChartModule } from 'primeng/chart';
 
 
 
@@ -66,7 +67,8 @@ import { FuncionariosComponent } from './pages/funcionarios/funcionarios.compone
     DropdownModule,
     FileUploadModule,
     ImageModule,
-    ToastModule
+    ToastModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

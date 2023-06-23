@@ -32,4 +32,8 @@ export class RestauranteService {
     return this.http.delete<any>(this.urlService.getUrl('admin/'+id))
   }
 
+  lucro():Observable<any>{
+    return this.http.get<any>(this.urlService.getUrl('lucro'))
+  }
+
 }

@@ -28,4 +28,8 @@ export class ReservasService {
     console.log(info)
     return this.http.post<any>(this.urlService.getUrl("mesasres"), info)
   }
+
+  ResCount():Observable<any>{
+    return this.http.get<any>(this.urlService.getUrl('rescount'));
+  }
 }

@@ -22,4 +22,8 @@ export class ClientesService {
   deleteCli(id:number):Observable<any>{
     return this.http.delete(this.urlService.getUrl("cliente/"+id))
   }
+
+  count():Observable<any>{
+    return this.http.get<any>(this.urlService.getUrl('usercount'));
+  }
 }
