@@ -16,3 +16,13 @@ export interface ProdEnc{
   quant:string;
   preco:number;
 }
+
+export interface Func {
+  id_funcionario:number;
+  nomefunc:string;
+  morada:string;
+  email:string;
+  telefone:number;
+  codPostal:string;
+  cargo:string;
+}

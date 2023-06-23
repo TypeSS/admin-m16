@@ -48,6 +48,20 @@
       <li class="my-px">
         <a
         routerLinkActive="bg-[#464136] !text-white"
+
+          [routerLink]="'/admin/funcionarios'"
+          href="#"
+          class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-[#1A1814] hover:text-yellow-500"
+        >
+        <span class="flex items-center justify-center text-lg text-gray-400">
+            <i class="pi pi-user  hover:text-yellow-500"></i>
+          </span>
+          <span class="ml-3">Funcionários</span>
+        </a>
+      </li>
+      <li class="my-px">
+        <a
+        routerLinkActive="bg-[#464136] !text-white"
         [routerLink]="'/admin/reservas'"
           href="#"
           class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-[#1A1814] hover:text-yellow-500"

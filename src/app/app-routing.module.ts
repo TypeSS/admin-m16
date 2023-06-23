@@ -7,6 +7,7 @@ import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { EncomendasComponent } from './pages/encomendas/encomendas.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AdminpagesComponent } from './pages/adminpages/adminpages.component';
+import { FuncionariosComponent } from './pages/funcionarios/funcionarios.component';
 
 
 
@@ -17,7 +18,8 @@ const routes: Routes = [
     {path:'clientes', component:ClientesComponent},
     {path:'reservas', component:ReservasComponent},
     {path:'produtos', component:ProdutosComponent},
-    {path:'encomendas', component:EncomendasComponent}
+    {path:'encomendas', component:EncomendasComponent},
+    {path:'funcionarios', component:FuncionariosComponent}
   ] },
   {path:'login', component:LoginComponent}
 

@@ -28,6 +28,7 @@ import {ImageModule} from 'primeng/image';
 import { LoginComponent } from './pages/login/login.component';
 import { ToastModule } from 'primeng/toast';
 import { AdminpagesComponent } from './pages/adminpages/adminpages.component';
+import { FuncionariosComponent } from './pages/funcionarios/funcionarios.component';
 
 
 
@@ -45,6 +46,7 @@ import { AdminpagesComponent } from './pages/adminpages/adminpages.component';
     EncomendasComponent,
     LoginComponent,
     AdminpagesComponent,
+    FuncionariosComponent,
     ],
   imports: [
     BrowserModule,
