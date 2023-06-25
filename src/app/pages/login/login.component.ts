@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AccountService } from 'src/services/account/account.service';
@@ -9,7 +9,7 @@ import { AccountService } from 'src/services/account/account.service';
   styleUrls: ['./login.component.css'],
   providers:[MessageService]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   email: string = "";
   password: string = "";
   verif : boolean = false;
@@ -18,6 +18,14 @@ export class LoginComponent {
   info: object = {"email": this.email, "password":this.password };
 
   constructor(private userlogin : AccountService, private router:Router, private messageService: MessageService){}
+
+  ngOnInit(): void {
+    if (localStorage.getItem('id')){
+      this.router.navigateByUrl('/admin/dashboard')
+    }
+  }
+
+
   testelogin(){
 
     this.info = {"email": this.email, "password":this.password };

@@ -3,6 +3,7 @@ export interface Restaurante {
 
 export interface Encomendas{
   id_encomenda:number;
+  id_utilizador:number;
   nome:string;
   nome_restaurante:string;
   precototal:number;

@@ -3,7 +3,8 @@ import { Encomendas, ProdEnc } from 'src/models/restaurante/restaurante';
 import { RestauranteService } from 'src/services/restaurante/restaurante.service';
 
 export interface estado{
-  estado:string;
+  code:string;
+  name:string;
 }
 
 
@@ -18,9 +19,9 @@ export class EncomendasComponent implements OnInit{
   selectedEnc?:Encomendas;
   abrirEnc:boolean = false;
   prodInfo:ProdEnc[] = [];
-  selectedEstado?:estado;
-  estados:estado[]=[{estado:"Preparação"},{estado:"A caminho"}, {estado:"Entregue"}]
-
+  selectedEstado?:string;
+  estados:estado[]=[{code:"Preparação",name:"Preparação"},{code:"A caminho",name:"A caminho"}, {code:"Entregue",name:"Entregue"}]
+  enc:any = {};
   constructor(private restService: RestauranteService){}
 
   ngOnInit() {
@@ -30,7 +31,9 @@ export class EncomendasComponent implements OnInit{
   }
 
   encInfo(){
-    this.selectedEstado!.estado = ''
+    console.log(this.selectedEnc?.estado)
+    this.selectedEstado = this.selectedEnc?.estado;
+    console.log(this.selectedEstado)
     this.abrirEnc = true;
     this.restService.getProdEnc(this.selectedEnc!.id_encomenda).subscribe((res)=>{
       this.prodInfo = res
@@ -38,7 +41,12 @@ export class EncomendasComponent implements OnInit{
   }
 
 
-  UpdateEstado(teste:any){
-    console.log(teste)
+  UpdateEstado(){
+    this.enc={
+      'id_encomenda':this.selectedEnc?.id_encomenda,
+      'estado':this.selectedEstado
+    }
+
+    this.restService.updateEnc(this.enc).subscribe()
   }
 }

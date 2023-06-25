@@ -1,4 +1,5 @@
 import { Component, HostListener, ViewChild  } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 
@@ -9,4 +10,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class SidebarComponent {
 
+  constructor(private router:Router){}
+
+logOut(){
+  localStorage.removeItem('id');
+
+  if(!localStorage.getItem('id')){
+    this.router.navigateByUrl('login')
+  }
+}
 }

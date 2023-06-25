@@ -59,11 +59,11 @@
   </div>
 
 
-  <p-dialog header="Header" [(visible)]="abrirEnc" [modal]="true" [style]="{ width: '50vw' }">
+  <p-dialog header="Header" [(visible)]="abrirEnc" [modal]="true" [style]="{ width: '40vw' }">
     <ng-template pTemplate="header">
         <span class="text-xl font-bold">Informação da Encomenda</span>
     </ng-template>
-    <div class="flex flex-row">
+    <div class="flex flex-row gap-10">
     <p-listbox [options]="prodInfo" [readonly]="true"  optionLabel="name"  [listStyle]="{ 'width': '20rem' }" [style]="{ width: '20rem' }">
       <ng-template let-prod pTemplate="item">
           <div class="flex align-items-center gap-2">
@@ -71,14 +71,15 @@
           </div>
       </ng-template>
   </p-listbox>
-      <div class="flex flex-col">
-        <p-dropdown [options]="estados" [(ngModel)]="selectedEstado" [ngModelOptions]="{standalone: true}" optionLabel="estado"></p-dropdown>
-
+        <div *ngIf="selectedEnc?.estado">
+        <p-listbox [options]="estados" optionValue="code" optionLabel="name" [style]="{'width':'15rem'}"
+        emptyMessage='Erro' [(ngModel)]="selectedEstado"
+        [ngModelOptions]="{standalone: true}"></p-listbox>
       </div>
-    </div>
+      </div>
       <ng-template pTemplate="footer">
         <div class="flex flex-row justify-center">
-          <p-button icon="pi pi-check" label="Atualizar"  styleClass="mr-10"></p-button>
+          <p-button icon="pi pi-check" label="Atualizar" (onClick)="UpdateEstado()"  styleClass="mr-10"></p-button>
           <p-button icon="pi pi-times"  label="Cancelar" ></p-button>
         </div>
     </ng-template>

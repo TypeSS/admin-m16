@@ -36,4 +36,8 @@ export class RestauranteService {
     return this.http.get<any>(this.urlService.getUrl('lucro'))
   }
 
+  updateEnc(encInfo:any){
+    return this.http.put<any>(this.urlService.getUrl('encomenda'), encInfo)
+  }
+
 }

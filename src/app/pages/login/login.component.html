@@ -9,9 +9,6 @@
                   <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl text-yellow-500">
                       Entra na tua conta
                   </h1>
-                  <a [routerLink]="'/home'">
-                           <i class="pi pi-times"></i>
-                  </a>
               </div>
 
               <form class="space-y-4 md:space-y-6" action="#">
@@ -28,13 +25,8 @@
                 <input #Password type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"  pInputText placeholder="Password" class="text-white bg-[#0C0B09]" [ngClass]="{'ng-dirty ng-invalid': verif}"/>
             </div>
                   <div class="flex items-center justify-between">
-
-                      <a href="#" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Esqueceste-te da tua senha?</a>
                   </div>
                   <button type="button" pButton pRipple (click)="testelogin()" label="Entrar" class="w-full"></button>
-                  <p class="text-sm font-light text-white">
-                      Não tens conta? <a [routerLink]="['/register']" class="font-medium text-primary-600 hover:underline text-yellow-500">Cria uma</a>
-                  </p>
                   <p-toast position="bottom-right" class=""></p-toast>
               </form>
           </div>
