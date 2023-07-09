@@ -1,5 +1,5 @@
 <aside
-  class="sidebar w-64 h-[1000px] md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-[#0C0B09]"
+  class="sidebar w-64 h-screen md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-[#0C0B09]"
 >
   <div class="sidebar-header flex items-center justify-center py-4">
     <div class="inline-flex">
@@ -95,6 +95,18 @@
             <i class="pi pi-credit-card  hover:text-yellow-500"></i>
           </span>
           <span class="ml-3">Encomendas</span>
+        </a>
+      </li>
+      <li class="my-px">
+        <a
+        [routerLink]="'/admin/pedidos'"
+        routerLinkActive="bg-[#464136]  !text-white"
+          class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-[#1A1814] hover:text-yellow-500"
+        >
+          <span class="flex items-center justify-center text-lg text-gray-400">
+            <i class="pi pi-credit-card  hover:text-yellow-500"></i>
+          </span>
+          <span class="ml-3">Pedidos</span>
         </a>
       </li>
       <li class="my-px">

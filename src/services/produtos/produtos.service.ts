@@ -12,11 +12,11 @@ export class ProdutosService {
   constructor(private http: HttpClient, private urlService: UrlService) { }
 
   getProdutos():Observable<Produtos[]>{
-    return this.http.get<Produtos[]>(this.urlService.getUrl("produto"));
+    return this.http.get<Produtos[]>(this.urlService.getUrl("produtos"));
   }
 
   getCategoria():Observable<Categoria[]>{
-    return this.http.get<Categoria[]>(this.urlService.getUrl("categorias"));
+    return this.http.get<Categoria[]>(this.urlService.getUrl("produtos/categorias"));
   }
 
   criarProduto(produto: Produtos, file: File): Observable<Produtos> {
@@ -31,15 +31,15 @@ export class ProdutosService {
 
     console.log(formData)
 
-    return this.http.post<Produtos>(this.urlService.getUrl('produto'), formData);
+    return this.http.post<Produtos>(this.urlService.getUrl('produtos'), formData);
   }
 
   updateProduto(produto:Produtos):Observable<Produtos>{
-    return this.http.put<Produtos>(this.urlService.getUrl("updateProduto"), produto)
+    return this.http.put<Produtos>(this.urlService.getUrl("produtos"), produto)
   }
 
   deleteProduto(id:number):Observable<any>{
     console.log(id)
-    return this.http.delete(this.urlService.getUrl("produto/"+id))
+    return this.http.delete(this.urlService.getUrl("produtos/"+id))
   }
 }

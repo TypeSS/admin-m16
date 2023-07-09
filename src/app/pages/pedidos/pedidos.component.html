@@ -1,0 +1,158 @@
+
+
+
+
+  <div class="flex flex-col self-start m-10 ">
+    <p class="text-[36px] font-bold text-yellow-500">
+      Pedidos
+        </p>
+        <hr class=" border-yellow-500 border-b-2 w-[200px]"/>
+
+<div class="my-5 ">
+  <p-button icon="pi pi-plus" (onClick)="abrirPedModal()" label="Criar Pedido"></p-button>
+</div>
+
+<div class="">
+  <p-table [value]="pedidos"
+[globalFilterFields]="['nomeproduto', 'descricao', 'preco', 'categoria']"
+selectionMode="single"
+[(selection)]="selectedPed"
+[paginator]="true"
+[rows]="5"
+[rowsPerPageOptions]="[5, 10, 25, 50, 100]"
+(onRowSelect)="editPedido()">
+<ng-template pTemplate="header">
+  <tr>
+    <th>Restaurante</th>
+    <th>Mesa</th>
+    <th>Estado</th>
+  </tr>
+  <tr>
+    <th>
+      <p-columnFilter type="text" field="restaurante"></p-columnFilter>
+    </th>
+    <th>
+      <p-columnFilter type="text" field="id_mesa"></p-columnFilter>
+    </th>
+    <th>
+      <p-columnFilter type="text" field="estado"></p-columnFilter>
+    </th>
+  </tr>
+</ng-template>
+<ng-template pTemplate="body" let-ped>
+  <tr [pSelectableRow]="ped">
+    <td>{{ ped.nome_restaurante }}</td>
+    <td>{{ ped.id_mesa }}</td>
+    <td>{{ ped.estado }}</td>
+  </tr>
+</ng-template>
+</p-table>
+
+
+<!--Criar-->
+
+<p-dialog header="Header" [(visible)]="abrirPedEnc" [modal]="true"  [style]="{ width: '50vv'}">
+  <ng-template pTemplate="header">
+      <span class="text-xl font-bold">Criar Pedido</span>
+  </ng-template>
+  <div class="flex flex-row gap-10" *ngIf="!abaProdutos">
+    <div class=" flex flex-col justify-center items-center">
+    <div class="font-bold text-xl md:text-xl text-yellow-500">Seleciona o restaurante</div>
+    <p-listbox  class="mt-5" [options]="listarest" optionValue="id_restaurante" optionLabel="nome_restaurante" [style]="{'width':'15rem'}"
+    emptyMessage='Erro' [(ngModel)]="selectedRest" (onClick)="getMesas()"
+    [ngModelOptions]="{standalone: true}"></p-listbox>
+  </div>
+
+    <div *ngIf="selectedRest" class="flex flex-col justify-center items-center">
+      <div class="font-bold text-xl md:text-xl text-yellow-500">Seleciona a mesa</div>
+      <p-listbox *ngIf="listamesa"   class="mt-5" [options]="listamesa" optionValue="id_mesa" optionLabel="id_mesa" [style]="{'width':'15rem'}"
+      emptyMessage='Erro' [(ngModel)]="selectedMesa"
+      [ngModelOptions]="{standalone: true}"></p-listbox>
+    </div>
+  </div>
+
+  <p-table [value]="listaprodutos" [tableStyle]="{ 'min-width': '50rem' }" *ngIf="abaProdutos"  [paginator]="true"
+  [rows]="5"
+  [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
+  >
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Quantidade</th>
+            <th style="width: 5rem"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-prod>
+        <tr>
+            <td>{{ prod.nomeproduto }}</td>
+            <td>{{ prod.categoria }}</td>
+            <td><p-dropdown appendTo="body" [options]="quantidade" [(ngModel)]="selectedMesa"
+              [ngModelOptions]="{standalone: true}"></p-dropdown></td>
+            <td>
+                <button type="button" pButton pRipple icon="pi pi-plus"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+  <ng-template pTemplate="footer">
+      <div class="flex flex-row justify-center">
+        <p-button icon="pi pi-check" *ngIf="abaProdutos" class="" label="Criar" (onClick)="criarPed()" styleClass="mr-10"></p-button>
+        <p-button icon="pi pi-arrow-right" *ngIf="!abaProdutos" (onClick)="Produtos()" label="Avançar"></p-button>
+        <p-button icon="pi pi-times"   label="Cancelar" (onClick)="abrirPedEnc = false"></p-button>
+      </div>
+  </ng-template>
+</p-dialog>
+
+
+<!--Update-->
+<p-dialog header="Header" [(visible)]="editModal" [modal]="true"  [style]="{ width: '50vv'}">
+  <ng-template pTemplate="header">
+      <span class="text-xl font-bold">Atualizar Pedidos</span>
+  </ng-template>
+
+  <p-listbox [options]="prodInfo" *ngIf="!addProduto" [readonly]="true"  optionLabel="name"  [listStyle]="{ 'width': '20rem' }" [style]="{ width: '20rem' }">
+    <ng-template let-prod pTemplate="item">
+        <div class="flex align-items-center gap-2">
+            <div><span class="font-bold">{{ prod.nomeproduto }}</span> - {{prod.preco | currency:"EUR"}} - {{prod.quant}}x </div>
+        </div>
+    </ng-template>
+</p-listbox>
+  <p-table [value]="listaprodutos" *ngIf="addProduto" [tableStyle]="{ 'min-width': '50rem' }"  [paginator]="true"
+  [rows]="5"
+  [rowsPerPageOptions]="[5, 10, 25, 50, 100]"
+  >
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Quantidade</th>
+            <th style="width: 5rem"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-prod>
+        <tr>
+            <td>{{ prod.nomeproduto }}</td>
+            <td>{{ prod.categoria }}</td>
+            <td><p-dropdown appendTo="body" [options]="quantidade" [(ngModel)]="selectedMesa"
+              [ngModelOptions]="{standalone: true}"></p-dropdown></td>
+            <td>
+                <button type="button" pButton pRipple icon="pi pi-plus"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+  <ng-template pTemplate="footer">
+      <div class="flex flex-row justify-center">
+        <p-button icon="pi pi-check" label="Atualizar" (onClick)="addProduto = true" ></p-button>
+        <p-button icon="pi pi-trash" label="Fechar" ></p-button>
+        <p-button icon="pi pi-times"  label="Cancelar"></p-button>
+      </div>
+  </ng-template>
+</p-dialog>
+</div>
+</div>
+
+

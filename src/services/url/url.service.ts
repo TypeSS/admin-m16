@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UrlService {
-  private url = "http://localhost:3000/"
+  private url = "https://deliciasportugal-apim.azure-api.net/"
   constructor() { }
-  
+
   getUrl(cmd: string ){
     return this.url+cmd;
   }

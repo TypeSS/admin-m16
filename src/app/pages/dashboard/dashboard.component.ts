@@ -23,9 +23,9 @@ export class DashboardComponent implements OnInit {
       this.ResCount = res.ResCount
     })
 
+
     this.restService.lucro().subscribe((res)=>{
-      this.lucro = res.soma
-      console.log(res)
+      this.lucro = Number(res.soma)
     })
   }
 }

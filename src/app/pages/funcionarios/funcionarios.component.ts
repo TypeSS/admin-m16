@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Func } from 'src/models/restaurante/restaurante';
+import { AdminService } from 'src/services/admin/admin.service';
 import { RestauranteService } from 'src/services/restaurante/restaurante.service';
 
 @Component({
@@ -14,10 +15,10 @@ export class FuncionariosComponent implements OnInit {
   funcModal:boolean = false;
 
 
-  constructor(private resService:RestauranteService){}
+  constructor(private adminService:AdminService){}
 
   ngOnInit() {
-    this.resService.getAdmin().subscribe((res)=>{
+    this.adminService.getAdmin().subscribe((res)=>{
       this.funcionarios = res;
       console.log(this.funcionarios)
     })
@@ -25,12 +26,12 @@ export class FuncionariosComponent implements OnInit {
 
 
   updateFunc(){
-    this.resService.updateFunc(this.selectedFunc!).subscribe()
+    this.adminService.updateAdmin(this.selectedFunc!).subscribe()
     this.funcModal = false;
   }
 
   deleteFunc(){
-    this.resService.deleteFunc(this.selectedFunc!.id_funcionario).subscribe();
+    this.adminService.deleteAdmin(this.selectedFunc!.id_funcionario).subscribe();
     this.funcModal = false;
   }
 

@@ -12,18 +12,18 @@ export class ClientesService {
   constructor(private http: HttpClient, private urlService: UrlService) { }
 
   getUsers():Observable<Clientes[]>{
-    return this.http.get<Clientes[]>(this.urlService.getUrl("users"));
+    return this.http.get<Clientes[]>(this.urlService.getUrl("clientes"));
   }
 
   updateCliente(info:Clientes):Observable<Clientes>{
-    return this.http.put<Clientes>(this.urlService.getUrl("updateuser"), info)
+    return this.http.put<Clientes>(this.urlService.getUrl("clientes"), info)
   }
 
   deleteCli(id:number):Observable<any>{
-    return this.http.delete(this.urlService.getUrl("cliente/"+id))
+    return this.http.delete(this.urlService.getUrl("clientes/"+id))
   }
 
   count():Observable<any>{
-    return this.http.get<any>(this.urlService.getUrl('usercount'));
+    return this.http.get<any>(this.urlService.getUrl('clientes/count'));
   }
 }

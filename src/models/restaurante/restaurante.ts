@@ -1,6 +1,10 @@
 export interface Restaurante {
+  id_restaurante:number;
+  localidade:string;
+  telefone:number;
+  nome_restaurante: string;
+  morada: string;
 }
-
 export interface Encomendas{
   id_encomenda:number;
   id_utilizador:number;
@@ -26,4 +30,11 @@ export interface Func {
   telefone:number;
   codPostal:string;
   cargo:string;
+}
+
+export interface Pedido {
+  id_pedido:number;
+  nome_restaurante:string;
+  id_mesa:string;
+  estado:string;
 }

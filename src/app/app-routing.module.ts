@@ -8,6 +8,7 @@ import { EncomendasComponent } from './pages/encomendas/encomendas.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AdminpagesComponent } from './pages/adminpages/adminpages.component';
 import { FuncionariosComponent } from './pages/funcionarios/funcionarios.component';
+import { PedidosComponent } from './pages/pedidos/pedidos.component';
 
 
 
@@ -19,7 +20,8 @@ const routes: Routes = [
     {path:'reservas', component:ReservasComponent},
     {path:'produtos', component:ProdutosComponent},
     {path:'encomendas', component:EncomendasComponent},
-    {path:'funcionarios', component:FuncionariosComponent}
+    {path:'funcionarios', component:FuncionariosComponent},
+    {path:'pedidos', component:PedidosComponent}
   ] },
   {path:'login', component:LoginComponent}
 

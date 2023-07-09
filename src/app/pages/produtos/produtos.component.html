@@ -40,9 +40,11 @@ selectionMode="single"
       <p-columnFilter type="text" field="preco"></p-columnFilter>
     </th>
     <th>
+      <p-columnFilter type="text" field="iamgem"></p-columnFilter>
+    </th>
+    <th>
       <p-columnFilter type="text" field="categoria"></p-columnFilter>
     </th>
-
   </tr>
 </ng-template>
 <ng-template pTemplate="body" let-produto>
@@ -106,7 +108,7 @@ emptyMessage='Erro' (onClick)="id_categoria = $event.value.id_categoria"></p-lis
 emptyMessage='Erro' [(ngModel)]="this.selectedProd!.id_categoria"
 [ngModelOptions]="{standalone: true}"></p-listbox>
 <div class="mt-12">
-  
+
   <span class="text-sm font-bold text-yellow-500">Preview Imagem:</span>
   <hr class=" border-yellow-500 border-b-2 w-[50px]"/>
   <img class="shadow-4  w-[240px] h-[150px]" src="https://imgmod16.blob.core.windows.net/teste/{{selectedProd.imagem}}" alt="Imagem de visualização">

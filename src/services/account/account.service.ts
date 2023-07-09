@@ -11,6 +11,6 @@ export class AccountService {
   constructor(private http: HttpClient, private urlService: UrlService) { }
 
   getLogin(userinfo:object):Observable<any>{
-    return this.http.post<any>(this.urlService.getUrl("adminlogin"), userinfo)
+    return this.http.post<any>(this.urlService.getUrl("login/admin"), userinfo)
   }
 }

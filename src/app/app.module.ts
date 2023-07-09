@@ -30,6 +30,7 @@ import { ToastModule } from 'primeng/toast';
 import { AdminpagesComponent } from './pages/adminpages/adminpages.component';
 import { FuncionariosComponent } from './pages/funcionarios/funcionarios.component';
 import { ChartModule } from 'primeng/chart';
+import { PedidosComponent } from './pages/pedidos/pedidos.component';
 
 
 
@@ -48,6 +49,7 @@ import { ChartModule } from 'primeng/chart';
     LoginComponent,
     AdminpagesComponent,
     FuncionariosComponent,
+    PedidosComponent,
     ],
   imports: [
     BrowserModule,
