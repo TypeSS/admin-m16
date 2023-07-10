@@ -28,7 +28,6 @@ export class ReservasComponent implements OnInit {
   ngOnInit() {
     this.reservas.getReservas().subscribe((res)=>{
       this.resinfo = res
-      console.log(this.resinfo);
     })
   }
 
@@ -54,7 +53,7 @@ export class ReservasComponent implements OnInit {
   confirmarRes(situacao:string){
 
     if (situacao == "Aceite"){
-    console.log(this.selectedRes)
+      this.selectedRes!.situacao = situacao
     const info = {
       "situacao": situacao,
       "id_reserva":this.selectedRes?.id_reserva
