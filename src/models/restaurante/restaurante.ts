@@ -35,6 +35,15 @@ export interface Func {
 export interface Pedido {
   id_pedido:number;
   nome_restaurante:string;
-  id_mesa:string;
+  id_restaurante:number;
+  id_mesa:number;
   estado:string;
+}
+
+export interface PedProd {
+  id_pedido?:number;
+  id_produto:number;
+  nomeproduto:string;
+  quantidade:number;
+
 }
